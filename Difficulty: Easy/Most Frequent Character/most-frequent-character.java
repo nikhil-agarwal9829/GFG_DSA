@@ -1,28 +1,21 @@
 class Solution {
-    public static char getMaxOccuringChar(String s) {
-        char[] cs = s.toCharArray();
-        Arrays.sort(cs);
-        int max=0;
-        int k=0;
-        int t=0;
-        for(int i=0;i<(cs.length)-1; i++){
+    public char getMaxOccuringChar(String s) {
+        int[] freq = new int[26];
 
-            if(cs[i]==cs[i+1]){
-                t++;
-                
-            }else{
-                t=0;
-            }
-            if(t>max){
-                max=t;
-                k=i;
-                
-            }
-            
-            
+        for (char ch : s.toCharArray()) {
+            freq[ch - 'a']++;
         }
-        return cs[k];
-        
-        
+
+        int maxFreq = 0;
+        char ans = 'a';
+
+        for (int i = 0; i < 26; i++) {
+            if (freq[i] > maxFreq) {
+                maxFreq = freq[i];
+                ans = (char) (i + 'a');
+            }
+        }
+
+        return ans;
     }
 }
