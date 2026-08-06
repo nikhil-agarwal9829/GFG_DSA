@@ -1,0 +1,18 @@
+class Solution {
+    boolean isDivisible(String s) {
+ 
+
+        int rem = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+
+            int bit = s.charAt(i) - '0';
+
+            rem = (rem * 2 + bit) % 3;
+        }
+
+        return rem == 0 ? true : false;
+    }
+}
+        
+    
